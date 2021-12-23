@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/Content/Admin.css" rel="stylesheet" />
+    <link href="~/Content/Dashboard.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="side-bar-nav">
+        <div class="logo-content">
+            <h3>Alpha Foodies</h3>
+            <i class='bx bx-menu menu-btn' id="toggleBtn" onclick="toggle()"></i>
+        </div>
+        <hr class="dl-horizontal" />
+        <div class="navigation">
+            <div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-home'></i>
+                    <span class="item-name">Dashboard</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="@Url.Action("Add_Staff","Admin")">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="item-name">Add staff</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-notepad'></i>
+                    <span class="item-name">View chefs</span>
+                </a>
+
+            </div>
+
+            <div class="nav-item">
+                <a href="@Url.Action("ViewMenu","Admin")">
+                    <i class='bx bx-food-menu'></i>
+                    <span class="item-name">Menu</span>
+                </a>
+
+            </div>
+
+            <div class="nav-item">
+                <a href="@Url.Action("AddMenuItem","Admin")">
+                    <i class='bx bx-add-to-queue'></i>
+                    <span class="item-name">Add menu item</span>
+                </a>
+
+            </div>
+
+            <div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-cart'></i>
+                    <span class="item-name">Order history</span>
+                </a>
+
+            </div>
+
+            <div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-user'></i>
+                    <span class="item-name">Profile</span>
+                </a>
+
+            </div>
+
+            <div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-bell'></i>
+                    <span class="item-name">Notifications</span>
+                </a>
+                @*<span class="tool-tip">notifications</span>*@
+            </div>
+
+            <div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="item-name">Settings</span>
+                </a>
+                @*<span class="tool-tip">Settings</span>*@
+            </div>
+
+            <!--<div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="item-name">logout</span>
+                </a>-->
+            @*<span class="tool-tip"></span>*@
+            <!--</div>-->
+            <!--<div class="user-profile">
+                <div class="nav-item">
+                    <a href="#">
+                        <i class='bx bx-log-out'></i>
+                        <span class="item-name">logout</span>
+                    </a>-->
+            @*<span class="tool-tip"></span>*@
+            <!--</div>
+                <div class="user-details">
+                    <h4>Nonelela Cele (Admin)</h4>
+                    <div class="image"></div>
+                </div>
+            </div>-->
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/dashboard.js"></script>
+</body>
+</html>

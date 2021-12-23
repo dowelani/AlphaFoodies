@@ -1,0 +1,101 @@
+﻿@model IEnumerable<AlphaFoodies.Models.Order>
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/chef_Layout.cshtml";
+}
+
+<h1>History</h1>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chef.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Waiter.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Items)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service_Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_PrepTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tip)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chef.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Waiter.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Items)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service_Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_PrepTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tip)
+            </td>
+
+        </tr>
+    }
+
+</table>

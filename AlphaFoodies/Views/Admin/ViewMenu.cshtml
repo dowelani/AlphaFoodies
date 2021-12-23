@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AlphaFoodies.Models.MenuItem>
+@{
+    ViewBag.Title = "ViewMenu";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<h3 class="alert-secondary option-titles">Menu</h3>
+<div class="view_menu_container">
+    @foreach (var menuItem in Model)
+    {
+        var image_Source = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(menuItem.Picture));
+        var alt_Text = menuItem.Item_Name;
+        if (menuItem.Picture != null)
+        {
+            <div class="item-container ">
+
+                <div class="imageContainer">
+                    <img src="@image_Source" id="actual_Picture" alt="@alt_Text" />
+                </div>
+
+                <div class="item_text"> <p class="item_name">@menuItem.Item_Name</p> <span class="price">R @menuItem.Price</span></div>
+                <div class="bottom">
+
+                    <button class="btn btn-danger" onclick="createModal('@Url.Action("deleteMenuItem", "Admin" , new {id=menuItem.Item_Code})')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    
+                    <button class="btn btn-danger" onclick="createModal('@Url.Action("editItem", "Admin" , new {id=menuItem.Item_Code})')">
+                        <i class="fas fa-edit"></i>
+                    </button>                    
+                </div>
+            </div>
+        }
+    }
+</div>
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="modelContent">
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script> @*/*Lib*/*@
+    <script>
+        function createModal(url) {
+            $('#modelContent').load(url);
+            $('#myModal').modal('show');
+        }
+    </script>
+}
+
+

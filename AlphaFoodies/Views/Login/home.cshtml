@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/Shared/Login_Layout.cshtml";
+}
+@using (@Html.BeginForm("pass", "Login", FormMethod.Post))
+{
+    <div class="container" style="margin-bottom:300px">
+        <div class="row">
+            <div class="col-md-9 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" style="margin-bottom:60px">
+                            <div class="col">
+                                <center>
+                                    <img src="~/Images/logo_black.png" />
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col">
+                                <center>
+                                    <div class="imageContainer">
+                                        <img src="~/Images/profile-user.png" class="profile_user" />
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:60px">
+                            <div class="col">
+                                <center>
+                                    <h4>Member </h4>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:50px">
+                            <div class="col">
+                                <center>
+                                    <select class="form-control" id="user_type" name="user_type" style="width:380px">
+                                        <option selected disabled>select user type</option>
+                                        <option value="customer">customer</option>
+                                        <option value="admin">admin</option>
+                                        <option value="chef">chef</option>
+                                    </select>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:9px">
+                            <div class="col">
+                                <center>
+
+                                    <button class="btn btn-danger" id="loginBtn">Login</button>
+                                    @*<input type="button" class="btn btn-danger" id="loginBtn" value="Login" />*@
+
+                                </center>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

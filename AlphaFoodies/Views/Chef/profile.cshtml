@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AlphaFoodies.Models.Chef>
+
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Views/Shared/chef_Layout.cshtml";
+}
+@Styles.Render("~/Content/chef.css")
+<h1>Profile</h1>
+
+@{
+    int c = (int)ViewBag.id;
+}
+<br />
+
+
+@foreach (var item in Model)
+{
+    if (@c == item.ChefID)
+
+    {
+        <table class="t">
+            <tr class="r">
+                <th class="h">
+                    @Html.DisplayNameFor(model => model.ChefID)
+                </th>
+                <th class="h">
+                    @Html.DisplayFor(modelItem => item.ChefID)
+                </th>
+            </tr>
+            <tr class="r">
+                <th class="h">
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </th>
+                <th class="h">
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </th>
+            </tr>
+            <tr class="r">
+                <th class="h">
+                    @Html.DisplayNameFor(model => model.Lastname)
+                </th>
+                <th class="h">
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </th>
+            </tr>
+            <tr class="r">
+                <th class="h">
+                    @Html.DisplayNameFor(model => model.Email_Address)
+                </th>
+                <th class="h">
+                    @Html.DisplayFor(modelItem => item.Email_Address)
+                </th>
+            </tr>
+            <tr class="r">
+                <th class="h">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th class="h">
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </th>
+            </tr>
+            <tr class="r">
+                <th class="h">
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th class="h">
+                    @Html.DisplayFor(modelItem => item.Password)
+                </th>
+            </tr>
+        </table>
+
+    }
+}
+

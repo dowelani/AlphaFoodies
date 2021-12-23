@@ -1,0 +1,83 @@
+﻿@model AlphaFoodies.Models.Order
+@{
+    ViewBag.Title = "ViewMenu";
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+
+}
+@if (Model != null) { 
+
+    <div class="ordered-items-container">
+        <div id="order-no">Order Number : <span>@Model.Order_Number</span></div>
+        <br />
+        <div id="order-items"> 
+            @foreach(var orderItem in Model.OrderItems)
+                {
+                var price = orderItem.Quantity * orderItem.MenuItem.Price;
+                    <div class="order-item-container"> 
+                        <span class="ordered-name">@orderItem.MenuItem.Item_Name</span><span >@orderItem.Quantity</span>
+                        <p class="price">R @price</p>
+                    </div>
+                }
+        </div>
+        <div class="stationary-container">
+
+            <div id="order-status" class="ordered-name">
+                <span>Order status</span>
+            </div>
+            <div id="order-type" class="ordered-name">
+                <span>Order type</span>
+            </div>
+            <div id="order-prep" class="ordered-name">
+                <span>Preparation time</span>
+            </div>
+            <div id="order-chef" class="ordered-name">
+                <span>Designated chef</span>
+            </div>
+            <div id="order-waiter" class="ordered-name">
+                <span>Designated waiter</span>
+            </div>
+            <div id="order-rating" class="ordered-name">
+                <span>Order rating</span>
+            </div>
+            <div id="order-tip" class="ordered-name">
+                <span>Tip amount</span>
+            </div>
+            <div id="order-amount" class="ordered-name">
+                <span>Order Total</span>
+            </div>
+            <div id="order-total" class="ordered-name">
+                @{var total = Model.Tip + Model.Order_Total; }
+                <span>Total amount</span>
+            </div>
+            <div class="ordered-name" id="value">
+                <div id="order-status" class="ordered-name">
+                    <span class="value">@Model.Order_Status</span>
+                </div>
+                <div id="order-type" class="ordered-name">
+                    <span class="value">@Model.Order_Type</span>
+                </div>
+                <div id="order-prep" class="ordered-name">
+                    <span class="value">@Model.Order_PrepTime</span>
+                </div>
+                <div id="order-chef" class="ordered-name">
+                    <span class="value">@Model.Chef.Firstname </span><span>  @Model.Chef.Lastname</span>
+                </div>
+                <div id="order-waiter" class="ordered-name">
+                    <span class="value">@Model.Waiter.Firstname </span><span>  @Model.Waiter.Lastname</span>
+                </div>
+                <div id="order-rating" class="ordered-name">
+                    <span class="value">@Model.Service_Rating - star(s)</span>
+                </div>
+                <div id="order-tip" class="ordered-name">
+                    <span class="value">R @Model.Tip</span>
+                </div>
+                <div id="order-amount" class="ordered-name">
+                    <span class="value">R @Model.Order_Total</span>
+                </div>
+                <div id="order-total" class="ordered-name">
+                    <span>Total amount</span> <span class="value">R @total</span>
+                </div> 
+            </div>
+        </div>
+    </div>
+}

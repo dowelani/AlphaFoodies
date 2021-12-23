@@ -1,0 +1,107 @@
+﻿@model IEnumerable<AlphaFoodies.Models.MenuItem>
+
+@{
+    ViewBag.Title = "ViewMenu";
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+
+}
+
+@using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+{
+    <div class="search-container">
+        @Html.TextBox("text", null, new { id = "search-box", placeholder = "enter text" })
+        <input class="btn" id="submit-btn" type="submit" value="search" /> 
+    </div>
+}
+
+<br />
+@if (TempData["notFound"] == null)
+{
+    if (ViewBag.text == null || ViewBag.text == "")
+    {
+        <div class="view_menu_container">
+            @foreach (var menuItem in Model)
+            {
+                var image_Source = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(menuItem.Picture));
+                var alt_Text = menuItem.Item_Name;
+                <div class="item-container ">
+
+                    <div class="imageContainer">
+                        <img src="@image_Source" id="actual_Picture" alt="@alt_Text" width:80px height:80px />
+                    </div>
+                    <br />
+                    <div class="item_text">
+                        <p class="item_name">@menuItem.Item_Name</p>
+                        <p class="price">R @menuItem.Price</p> 
+                    </div>
+                    <div class="btn-container">
+                        <a class="btn" id="add-to-cart-btn"  href='@Url.Action("addItem", "Customer",new { id = menuItem.Item_Code })'>Add to cart</a> 
+                    </div>
+
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class"btn" id="found-msg">@ViewBag.found</div>
+        <br />
+        <br />
+        <div class="view_menu_container">
+            @foreach (var menuItem in Model)
+            {
+                var image_Source = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(menuItem.Picture));
+                var alt_Text = menuItem.Item_Name;
+                <div class="item-container ">
+
+                    <div class="imageContainer">
+                        <img src="@image_Source" id="actual_Picture" alt="@alt_Text" width:80px height:80px />
+                    </div>
+                    <br />
+                    <div class="item_text">
+                        <p class="item_name">@menuItem.Item_Name</p>
+                        <p class="price">R @menuItem.Price</p>
+                    </div>
+                    <div class="btn-container">
+                        <a class="btn" id="add-to-cart-btn" href='@Url.Action("addItem", "Customer",new { id = menuItem.Item_Code })'>Add to cart</a>
+                    </div>
+
+                </div>
+            }
+        </div>
+    }
+}
+else
+{
+<div >
+    <p id="not-found">@TempData["notFound"]</p>
+</div>
+
+    <div class="view_menu_container">
+
+        @foreach (var menuItem in Model)
+        {
+            var image_Source = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(menuItem.Picture));
+            var alt_Text = menuItem.Item_Name;
+            <div class="item-container ">
+
+                <div class="imageContainer">
+                    <img src="@image_Source" id="actual_Picture" alt="@alt_Text" width:80px height:80px />
+                </div>
+                <br />
+                <div class="item_text">
+                    <p class="item_name">@menuItem.Item_Name</p>
+                    <p class="price">R @menuItem.Price</p>
+                </div>
+                <div class="btn-container">
+                    <a class="btn" id="add-to-cart-btn" href='@Url.Action("addItem", "Customer",new { id = menuItem.Item_Code })'>Add to cart</a>
+                </div>
+
+            </div>
+        }
+    </div>
+}
+<div id="view-cart-container"> 
+    <a id="view-cart" href='@Url.Action("viewCart", "Customer")'>View Cart <i class='bx bx-cart' id="cart-icon"></i></a> 
+</div>
+

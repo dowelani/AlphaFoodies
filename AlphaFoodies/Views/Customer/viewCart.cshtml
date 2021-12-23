@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AlphaFoodies.Models.OrderItem>
+@{
+    ViewBag.Title = "viewCart";
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+}
+@if (Model!=null && Model.Count() > 0)
+{    <br />
+     <br />
+    <div >
+        <a href='@Url.Action("Index", "Customer")' id="go-back">Click to view menu</a>
+    </div>
+    <br />
+    <div class="view_menu_container">
+        @foreach (var item in Model)
+        {
+            var menuItem = item.MenuItem;
+            var quantity = item.Quantity;
+            var image_Source = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(menuItem.Picture));
+            var alt_Text = menuItem.Item_Name;
+            var price = menuItem.Price * quantity;
+            <div class="item-container "> 
+                <div class="imageContainer">
+                    <img src="@image_Source" id="actual_Picture" alt="@alt_Text" width:80px height:80px />
+                </div>
+                <br />
+                <div class="item_text">
+                    <p class="item_name">@menuItem.Item_Name</p>
+                    <div class="cart-inc">
+                        <span id="quantity">
+                            <a class="btn" id="plus" href='@Url.Action("increament", "Customer",new { id = menuItem.Item_Code , check = "viewCart"})'>+</a>
+                            @quantity
+                            <a class="btn" id="minus" href='@Url.Action("Remove", "Customer",new { id = menuItem.Item_Code, check = "viewCart"})'>-</a>
+                        </span> 
+                    </div>
+                    <p class="price" id="cart-price">R @price</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div id="check-out" class="btn">
+    <a href="@Url.Action("viewOrder","Customer")">Check Out <i class='bx bx-happy ' id="face-emote"></i></a>
+    </div>
+    <div id="remove-all" class="btn">
+        <a href="@Url.Action("RemoveAll","Customer",new {check = "viewCart"})">Clear Cart <i class='bx bx-meh' id="face-emote"></i></a> 
+    </div>
+}
+else
+{
+    <br />
+    <br />
+    <div id="nothing-on-cart">
+        <p> There is nothing on the cart. <span>  </span> <a href='@Url.Action("Index", "Customer")'>Click here to view Menu</a></p>
+    </div>
+}
+

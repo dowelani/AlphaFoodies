@@ -1,0 +1,32 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/Content/Customer.css" rel="stylesheet" />
+    <script src="~/Scripts/Customer.js"></script>
+</head>
+<body>
+    <div id="logo-container">
+        <img src="~/Images/logo.png" id="logo" />
+        <img src="~/Images/logo-context.png" id="logo-words" />
+        <a id="exit-icon" href='@Url.Action("pass", "Login")'> <i class='bx bx-exit'></i>  </a>
+        <div id="logout" onmouseover="exitToggle">exit</div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <center>
+    <footer>
+        <br />
+        <br />
+        <p>&copy; @DateTime.Now.Year, Alpha foodies</p>
+    </footer>
+</center>
+</body>
+</html>

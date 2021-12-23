@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/Content/Dashboard.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="side-bar-nav">
+        <div class="logo-content">
+            <h3>Alpha Foodies</h3>
+            <i class='bx bx-menu menu-btn' id="toggleBtn" onclick="toggle()"></i>
+        </div>
+        <hr class="dl-horizontal" />
+        <div class="navigation">
+            <div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-home'></i>
+                    <span class="item-name">Dashboard</span>
+                </a>
+
+                @*<span class="tool-tip">Dashboard</span>*@
+            </div>
+
+            <div class="nav-item">
+                <a href="@Url.Action("Add_Staff","Admin")">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="item-name">Orders</span>
+                </a>
+                @*<span class="tool-tip">add a new staff member</span>*@
+            </div>
+
+            <div class="nav-item">
+                <a href="@Url.Action("History","Chef")">
+                    <i class='bx bx-notepad'></i>
+                    <span class="item-name">Order History</span>
+                </a>
+                @*<span class="tool-tip">view chefs</span>*@
+            </div>
+
+            <div class="nav-item">
+                <a href="@Url.Action("profile","Chef")">
+                    <i class='bx bx-user'></i>
+                    <span class="item-name">Profile</span>
+                </a>
+                @*<span class="tool-tip">check profile</span>*@
+            </div>
+
+            <div class="nav-item">
+                <a href="@Url.Action("settings","Chef")">
+                    <i class='bx bx-cog'></i>
+                    <span class="item-name">Settings</span>
+                </a>
+                @*<span class="tool-tip">Settings</span>*@
+            </div>
+
+            <!--<div class="nav-item">
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="item-name">logout</span>
+                </a>-->
+            @*<span class="tool-tip"></span>*@
+            <!--</div>-->
+            <!--<div class="user-profile">
+                <div class="nav-item">
+                    <a href="#">
+                        <i class='bx bx-log-out'></i>
+                        <span class="item-name">logout</span>
+                    </a>-->
+            @*<span class="tool-tip"></span>*@
+            <!--</div>
+                <div class="user-details">
+                    <h4>Nonelela Cele (Admin)</h4>
+                    <div class="image"></div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/DashboardStript.js"></script>
+</body>
+</html>

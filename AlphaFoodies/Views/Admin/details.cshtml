@@ -1,0 +1,52 @@
+﻿@model AlphaFoodies.Models.MenuItem
+
+<div>
+    <h4>@Model.Item_Name</h4>
+    <hr />
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+
+            @if (Model.Picture != null)
+            {
+                var image_Source = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Picture));
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    <span>R</span>@Html.DisplayFor(model => model.Price)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </dt>
+
+                <dd>
+                    <img src="@image_Source" width="200px" height="200px" />
+                </dd>
+            }
+        </dl>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default"
+            data-dismiss="modal">
+        Close
+    </button>
+</div>

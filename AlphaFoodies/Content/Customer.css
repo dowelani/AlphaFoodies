@@ -1,0 +1,425 @@
+﻿@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+* {
+    padding: 0;
+    margin: 0; 
+    margin-top:0px;
+}
+input,
+select,
+textarea {
+    max-width: 280px;
+} 
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh
+}
+.btn {
+    background-color: #d55c5c;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 8px 3px 8px;
+}
+    .btn:hover {
+        color: white; 
+    }
+    .btn:focus {
+        outline: none;
+        outline: 0px;
+        color: white;
+    }
+    .btn:active {
+        outline: none;
+        outline: 0px;
+        color: white;
+    }
+#logo {
+    width: 65px;
+    height: 90px;
+    margin-left: 20px;
+} 
+#logo-words {
+    margin-left: 30%;
+    margin-right: 15px;
+    margin-top:24px;
+    height: 40px;
+}
+#exit-icon{
+    font-size: 42px;
+    margin-left: 380px;   
+    margin-top:25px; 
+    opacity:0.5;
+    color:azure;
+}
+#exit-icon:hover{
+    margin-top:20px;
+    font-size:45px;
+    cursor:pointer;
+}
+#logout { 
+    margin-top: 17px;
+    height: 15px;
+    font-size: 11px;
+    border: none;
+    color: white;
+} 
+#logo-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    background-color: #E56E5E;
+    border: 2px solid #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;  
+}
+.search-container {
+    margin-left: 72%;
+    margin-top: 15px;
+    height: 30px; 
+    display: block;
+    max-block-size:300px;
+}
+#search-box {
+    width: 200px;
+    height: 30px; 
+    padding-left: 15px;  
+    border: 2px solid #e56e5e;
+    border-radius:5px;
+}
+    #search-box:focus {
+        border: 2px solid #e56e5e;
+        outline:none;
+    }
+#submit-btn{ 
+    max-width:65px; 
+    margin-left:-3px;
+    margin-bottom:4px;
+}
+#search-icon {
+    font-size: 24px;
+    height: 30px;
+    width: 30px;
+    margin-left: 2px;
+}
+#search-icon:hover{    
+    height:40%;
+    width:40%;
+    color:white;
+}
+#found-msg {
+    background-color: #d55c5c; 
+    filter:opacity(0.9); 
+    border-radius: 5px; 
+    margin-left: 18%;
+    display:inline-block;
+    height: 27px;
+    word-break: break-word;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 8px 5px 8px;
+    font-size:17px;
+}   
+#found-msg:hover{
+    cursor:not-allowed;
+}
+#not-found{
+    background-color: #d55c5c;
+    filter: opacity(0.8);
+    border-radius: 5px;
+    margin-left: 8%;
+    display: inline-block; 
+    word-break: break-word;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 8px 5px 8px;
+    font-size: 16px;
+}
+#not-found:hover{
+    cursor:not-allowed;
+}
+#go-back {
+    background-color: #d55c5c;
+    filter: opacity(0.9);
+    border-radius: 5px;
+    margin-left: 37%;
+    max-height: 30px;
+    display: inline-block;
+    word-break: break-word;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 8px 5px 8px;
+    font-size: 17px;
+}
+    #go-back a {
+        color: darkslateblue;
+    }
+#check-out {
+    margin-left: 86%;
+    top: 85%;
+    position: fixed;
+    background-color: #d55c5c;
+    border-radius: 3px;
+    display: block;
+    word-break: break-word;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 15px 5px 15px;
+    max-height: 40px;
+}
+    #check-out a {
+        color: white;
+    }
+#remove-all {
+    margin-left: 86%;
+    top: 92%;
+    position: fixed;
+    background-color: #d55c5c;
+    border-radius: 3px;
+    display: block;
+    word-break: break-word;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 15px 5px 15px;
+    max-height: 40px;
+}
+    #remove-all a {
+        color: white;
+    } 
+#face-emote{
+    font-size:20px;
+    margin-left:10px;
+    margin-top:5px;
+}
+#nothing-on-cart {
+    background-color: #d55c5c;
+    filter: opacity(0.9);
+    border-radius: 5px;
+    margin-left: 37%;
+    max-height: 30px;
+    display: inline-block;
+    word-break: break-word;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 8px 5px 8px;
+    font-size: 17px;
+}
+#nothing-on-cart a{
+    color:darkslateblue;
+}
+.cart-inc { 
+    margin-left: 30%;
+    max-height: 25px;
+    display: inline-block;
+    word-break: break-word; 
+} 
+#quantity {
+    word-break: break-word;
+    text-wrap:normal;
+    margin-left:8px;
+    display:inline;
+    color: black;
+    max-width:30px;
+    font-family: Montaga;
+} 
+#minus{
+    margin-left:5px;
+}
+.view_menu_container {
+    margin-left: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} 
+.item-container {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    width: 260px;
+    height: 380px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.25);
+    padding: 15px 15px;
+    align-content:center;
+}
+.imageContainer {
+    width: 230px;
+    height: 230px;
+}
+#actual_Picture {
+    width: 100%;
+    height: 100%;
+}
+.item_text {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    color: #000000;
+    font-family: Poppins; 
+}
+.item_name {
+    line-height: 22px;
+    font-family: Montaga;
+    font-size: 18px;
+    font-weight: 500;
+}
+.price {
+    font-family: Montaga;
+    line-height: 22px; 
+}
+#cart-price{
+    margin-top:6%;
+    margin-left:34%
+}
+#add-to-cart-btn {
+    margin-left: 35%;
+}
+#view-cart-container {
+    margin-left: 86%;
+    top:85%;
+    position: fixed;
+    background-color: #d55c5c;  
+    border-radius: 3px;
+    display: block;
+    word-break: break-word;
+    color: white;
+    font-family: Montaga;
+    padding: 3px 15px 5px 15px; 
+    max-height:40px;
+} 
+#view-cart{
+    color:white;    
+    font-size:18px;  
+    margin-bottom:10px;
+    display:inline-block;  
+}
+#cart-icon{
+    margin-left:5px;
+    margin-top:3px;
+    font-size:25px;
+    opacity:0.5; 
+}
+.ordered-items-container {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    width: 50%;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.25);
+    padding: 15px 15px;
+    align-content: center;
+    display: block;
+}
+.order-item-container {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;  
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.25);
+    padding: 15px 15px;
+    align-content: center;
+}
+#order-description {
+    white-space: nowrap;
+}
+.stationary-container {
+    margin-left: 60%;
+    top: 32%;
+    width:30%;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    display: block;
+    font-family: Montaga;
+    display: flex; 
+    flex-direction: column;
+    padding: 3px 15px 5px 15px;
+}
+#ordered-price{
+    margin-left:10px;
+    font:11px;
+}
+
+#orderd-inc {
+    max-height: 25px;
+    display: inline-block;
+    word-break: break-word;
+}
+#ordered-name { 
+    color: #000000;
+    font-family: Montaga;
+    font-weight: 500;  
+    word-break: break-word; 
+    padding: 3px 8px 5px 8px;
+    font-size: 19px; 
+}
+#comment-box {
+    margin-top: 5px;
+    padding-left: 15px;
+    padding-top: 10px;
+    border: 2px solid rgb(229 110 94 / 0.7);
+    border-radius: 5px;
+}
+    #comment-box:focus {
+        outline:none;
+        border: 2px solid rgb(229 110 94 / 0.7);
+        opacity: 0.7;
+        border-radius: 5px;
+    }
+#tip-box {
+    margin-top: 7px;
+    padding-left: 15px;
+    border: 2px solid rgb(229 110 94 / 0.7);
+    border-radius: 5px;
+}
+    #tip-box:focus{
+        outline: none;
+        border: 2px solid rgb(229 110 94 / 0.7);
+        border-radius: 5px;
+    }
+.rating{
+    margin-right:230px;
+    margin-top:3px;
+} 
+#order-type {
+    margin-top: 7px;
+}
+#radio-btn{
+    color:white;
+}
+.rating > input {
+    display: none;
+}
+.rating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+ 
+
+.rating > label {
+    color: #ddd;
+    float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, 
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label {
+    color: #d55c5c;
+    opacity:0.9;
+}
+    /* hover previous stars in list */
+
+    .rating > input:checked + label:hover, /* hover current star when changing rating */
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+    .rating > input:checked ~ label:hover ~ label {
+        color: #d55c5c;
+        opacity: 0.9;
+    }
+#value{
+    margin-top:-50%;
+    margin-left:50%;
+}

@@ -1,0 +1,78 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200&family=Palette+Mosaic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200&family=Palette+Mosaic&family=Poppins:wght@200&display=swap');
+
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.t, r, h {
+    width: 100%;
+    border-collapse: collapse;
+    /*text-align:center;*/
+    font-size: x-large;
+}
+
+.flexcon2 {
+    display: flex;
+}
+
+#flex21 {
+    flex: 0.15;
+    background-color: #444648;
+}
+
+#flex22 {
+    flex: 3;
+}
+
+#img, n {
+    display: inline-block;
+}
+
+.flexcon {
+    display: flex;
+    background-color: forestgreen;
+}
+
+#flex0 {
+    flex: 2;
+}
+
+#flex1 {
+    flex: 0.5;
+    text-align: right;
+}
+
+#flex22 {
+    flex: 0.5;
+}
+
+.dnav {
+    display: inline-block;
+}
+
+
+i {
+    font-size: 20px;
+}
+
+h1 {
+    font-size: xx-large;
+    font-weight: 900;
+}

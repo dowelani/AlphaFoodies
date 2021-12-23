@@ -1,0 +1,74 @@
+﻿@model AlphaFoodies.Models.MenuItem
+
+@{
+    ViewBag.Title = "AddMenuItem";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+    <link href="~/Content/Admin.css" rel="stylesheet" />
+}
+
+<h4 class="alert-secondary option-titles">Add new Menu Item</h4>
+@using (Html.BeginForm("AddMenuItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Item_Name, "Item Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Item_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Item_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control label col-md-2">Price</label>
+            <div class="input-group col-md-10">
+                <div class="input-group-text" id="btnGroupAddon">R</div>
+                <input type="text" class="form-control" aria-label="Input group example" aria-describedby="btnGroupAddon" name="price">
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="inputState">Select Category</label>
+                <select id="user_type" class="form-control" name="category">
+                    <option disabled selected>select Category</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Fast Food">Fast Food</option>
+                    <option value="Sea Food">Sea Food</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="thePicture" name="thePicture" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="add item" class="btn btn-danger" id="createBtn" />
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

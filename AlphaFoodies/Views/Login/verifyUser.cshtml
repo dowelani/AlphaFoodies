@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "verifyUser";
+    Layout = "~/Views/Shared/Login_Layout.cshtml";
+}
+@using (@Html.BeginForm("passTo", "Login", FormMethod.Post))
+{
+    <div class="container" style="margin-bottom:300px">
+        <div class="row">
+            <div class="col-md-9 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" style="margin-bottom:60px">
+                            <div class="col">
+                                <center>
+                                    <img src="~/Images/logo_black.png" />
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col">
+                                <center>
+                                    <div class="imageContainer">
+                                        <img src="~/Images/profile-user.png" class="profile_user" />
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:60px">
+                            <div class="col">
+                                <center>
+                                    <h4>Member </h4>
+                                </center>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-bottom:5px;margin-left:13rem">
+                            <div class="col">
+                                <center>
+                                    <div class="form-group">
+                                        
+                                        <div class="input-group col-md-12 mx-auto">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Input group example" aria-describedby="btnGroupAddon" id="email_address" name="email_address" placeholder="email address">
+                                        </div>
+
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-bottom: 5px; margin-left: 13rem">
+                            <div class="col">
+                                <center>
+                                    <div class="form-group">
+
+                                        <div class="input-group col-md-12 mx-auto">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-key"></i>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Input group example" aria-describedby="btnGroupAddon" id="password" name="password" placeholder="password">
+                                        </div>
+
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span class="text-danger" style="margin-left:13rem">@ViewBag.message</span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:9px">
+                            <div class="col">
+                                <center>
+
+                                    <button class="btn btn-danger" id="loginBtn">Login</button>
+                                    @*<input type="button" class="btn btn-danger" id="loginBtn" value="Login" />*@
+
+                                </center>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

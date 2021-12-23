@@ -1,0 +1,82 @@
+﻿@model IEnumerable<AlphaFoodies.Models.OrderItem>
+@{
+    ViewBag.Title = "viewOrder";
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+}
+@if (Model != null && Model.Count() > 0)
+{
+    <br />
+
+    <br />
+    <div class="ordered-items-container">
+        @foreach (var item in Model)
+        {
+            var menuItem = item.MenuItem;
+            var quantity = item.Quantity;
+            var price = menuItem.Price * quantity;
+        <div class="order-item-container">
+            <p class="ordered-name">@menuItem.Item_Name</p>
+            <p class="ordered-name" id="order-description">@menuItem.Description</p>
+            <div class="item_text">
+                <div class="orderd-inc">
+                    <span id="quantity">
+                        <a class="btn" id="plus" href='@Url.Action("increament", "Customer", new { id = menuItem.Item_Code })'>+</a>
+                        @quantity
+                        <a class="btn" id="minus" href='@Url.Action("Remove", "Customer", new { id = menuItem.Item_Code })'>-</a>
+                    </span> <span class="price" id="ordered-price">R @price</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    using (Html.BeginForm("viewOrder", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="stationary-container">
+
+            @Html.TextArea("Comment", null, new { id = "comment-box", placeholder = "enter your comment" })
+            @Html.TextBox("tip", null, new { id = "tip-box", placeholder = "enter tip amount" })
+            <div class="btn" id="order-type">
+                <p>Select order type</p>
+                <label id="radio-btn" for="radio-btn1">Sit-in </label>
+                @Html.RadioButton("orderType", "Sit in", false, new { id = "radio-btn1" })
+                <br />
+                <label id="radio-btn" for="radio-btn2">Take away</label>
+                @Html.RadioButton("orderType", "Take away", false, new { id = "radio-btn2" })
+            </div>
+            <fieldset class="rating">
+                <p class="ordered-name">Rate our service</p>
+                @Html.RadioButton("serviceRating", "5", false, new { id = "star5" })
+                <label class="full" for="star5"></label>
+                @Html.RadioButton("serviceRating", "4", false, new { id = "star4" })
+                <label class="full" for="star4"></label>
+                @Html.RadioButton("serviceRating", "3", false, new { id = "star3" })
+                <label class="full" for="star3"></label>
+                @Html.RadioButton("serviceRating", "2", false, new { id = "star2" })
+                <label class="full" for="star2"></label>
+                @Html.RadioButton("serviceRating", "1", false, new { id = "star1" })
+                <label class="full" for="star1"></label>
+            </fieldset>
+            <input class="btn" id="order" type="submit" value="Place Order" /> 
+            <br />
+        </div>
+    }
+    <div id="check-out" class="btn">
+        <a href="@Url.Action("Index", "Customer")">Add more Items <i class='bx bx-happy' id="face-emote"></i></a>
+    </div>
+    <div id="remove-all" class="btn">
+        <a href="@Url.Action("RemoveAll","Customer")">Clear Cart <i class='bx bx-meh' id="face-emote"></i></a> 
+    </div>
+}
+else
+{
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="go-back" class="btn">
+        <span>No items selected. </span>
+        <a href="@Url.Action("Index", "Customer")">click here to view menu</a>
+    </div>
+
+}
+
