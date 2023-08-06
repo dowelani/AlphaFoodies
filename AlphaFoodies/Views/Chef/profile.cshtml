@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "profile";
     Layout = "~/Views/Shared/chef_Layout.cshtml";
+
 }
 @Styles.Render("~/Content/chef.css")
 <h1>Profile</h1>
@@ -12,63 +13,96 @@
 }
 <br />
 
-
-@foreach (var item in Model)
-{
-    if (@c == item.ChefID)
-
+<div id="line">
+    @foreach (var item in Model)
     {
-        <table class="t">
-            <tr class="r">
-                <th class="h">
-                    @Html.DisplayNameFor(model => model.ChefID)
-                </th>
-                <th class="h">
-                    @Html.DisplayFor(modelItem => item.ChefID)
-                </th>
-            </tr>
-            <tr class="r">
-                <th class="h">
-                    @Html.DisplayNameFor(model => model.Firstname)
-                </th>
-                <th class="h">
-                    @Html.DisplayFor(modelItem => item.Firstname)
-                </th>
-            </tr>
-            <tr class="r">
-                <th class="h">
-                    @Html.DisplayNameFor(model => model.Lastname)
-                </th>
-                <th class="h">
-                    @Html.DisplayFor(modelItem => item.Lastname)
-                </th>
-            </tr>
-            <tr class="r">
-                <th class="h">
-                    @Html.DisplayNameFor(model => model.Email_Address)
-                </th>
-                <th class="h">
-                    @Html.DisplayFor(modelItem => item.Email_Address)
-                </th>
-            </tr>
-            <tr class="r">
-                <th class="h">
-                    @Html.DisplayNameFor(model => model.Phone)
-                </th>
-                <th class="h">
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </th>
-            </tr>
-            <tr class="r">
-                <th class="h">
-                    @Html.DisplayNameFor(model => model.Password)
-                </th>
-                <th class="h">
-                    @Html.DisplayFor(modelItem => item.Password)
-                </th>
-            </tr>
-        </table>
+        if (@c == item.ChefID)
+
+        {
+            <table class="t">
+                <tr class="r">
+                    <th class="h">
+                        @Html.DisplayNameFor(model => model.ChefID)
+                    </th>
+                    <th class="h">
+                        @Html.DisplayFor(modelItem => item.ChefID)
+                    </th>
+                </tr>
+                <tr class="r">
+                    <th class="h">
+                       
+                        Name
+                    </th>
+                    <th class="h">
+                        @Html.DisplayFor(modelItem => item.Firstname)
+                    </th>
+                </tr>
+                <tr class="r">
+                    <th class="h">
+                    
+                        Surname
+                    </th>
+                    <th class="h">
+                        @Html.DisplayFor(modelItem => item.Lastname)
+                    </th>
+                </tr>
+                <tr class="r">
+                    <th class="h">
+                   
+                        Email Address
+                    </th>
+                    <th class="h">
+                        @Html.DisplayFor(modelItem => item.Email_Address)
+                    </th>
+                </tr>
+                <tr class="r">
+                    <th class="h">
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th class="h">
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </th>
+                </tr>
+                <tr class="r">
+                    <th class="h">
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th class="h">
+                        @Html.DisplayFor(modelItem => item.Password)
+                        @{var image_Source = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(@item.Image));
+                            ViewData["image"] = image_Source; }
+                    </th>
+                </tr>
+            </table>
+        }
 
     }
-}
+    <br />
+    @{
+        var image = ViewBag.image;
+    }
+    <img src="@image" id="Picture" alt="Chef Image" />
+</div>
+<br />
+<br />
+<br />
+   
+    <input type="button" value="Edit Profile" class="btn btn-default" onclick="createModal('@Url.Action("edit","Chef")')" />
+    
 
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modelContent">
+
+            </div>
+        </div>
+    </div>
+    @section Scripts{
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+        <script>
+            function createModal(url) {
+                $('#modelContent').load(url);
+                $('#myModal').modal('show');
+            }
+        </script>
+    }

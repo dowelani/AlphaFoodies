@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "order";
+    Layout = "~/Views/Shared/chef_Layout.cshtml";
+    <link href="~/Content/chef.css" rel="stylesheet" />
+}
+@*@Styles.Render("~/Content/chef.css")*@
+@{
+
+    IEnumerable<AlphaFoodies.Models.Order> order = ViewData["order"] as IEnumerable<AlphaFoodies.Models.Order>;
+    IEnumerable<AlphaFoodies.Models.MenuItem> menuItem = ViewData["menuitem"] as IEnumerable<AlphaFoodies.Models.MenuItem>;
+    IEnumerable<AlphaFoodies.Models.OrderItem> orderItem = ViewData["orderitem"] as IEnumerable<AlphaFoodies.Models.OrderItem>;
+}
+<h1>Orders</h1>
+
+<h3 class="alert-secondary option-titles">Accept Orders</h3>
+<div class="view_menu_container">
+    @foreach (var Item1 in order)
+                { int cnt = 0;
+                    if (Item1.Order_Status == "Pending")
+                    {
+                        int quantity = 0;
+
+    <div class="item-container ">
+        <p style="text-align:center">Order Number : @Item1.Order_Number</p>
+        @foreach (var Item2 in orderItem)
+        {
+            if (Item2.Order_Number == Item1.Order_Number)
+            {
+                quantity = quantity + Item2.Quantity;
+
+
+                foreach (var Item3 in menuItem)
+                {
+                    if (Item2.Item_Code == Item3.Item_Code && cnt < 1)
+                    {
+                        var image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Item3.Picture));
+                        var alt_Text = Item3.Item_Name;
+
+                      
+                         <img src="@image" id="itemPicture" alt="@alt_Text" />
+                      
+        <p> </p>
+
+        cnt = cnt + 1;
+        }
+        }
+
+        }
+
+        }
+        <div class="bottom">
+            <input type="button" value="order details" style="align-self: baseline" class="btn btn-default" onclick="createModal('@Url.Action("Oview","Chef",new { id=Item1.Order_Number })')" />
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            <input type="button" value="Accept order" style="align-self: baseline" class="btn btn-default" onclick="createModal('@Url.Action("accept","Chef",new { id=Item1.Order_Number })')" />
+        </div>
+    </div>
+                    }
+
+                }
+            </div>
+<h3 class="alert-secondary option-titles">complete Orders</h3>
+<div class="view_menu_container">
+    @foreach (var Item1 in order)
+                {
+                    int cnt = 0;
+                    if (Item1.Order_Status == "accepted")
+                    {
+                        int quantity = 0;
+
+    <div class="item-container ">
+        <p style="text-align:center">Order Number : @Item1.Order_Number</p>
+        @foreach (var Item2 in orderItem)
+        {
+            if (Item2.Order_Number == Item1.Order_Number)
+            {
+                quantity = quantity + Item2.Quantity;
+
+
+                foreach (var Item3 in menuItem)
+                {
+                    if (Item2.Item_Code == Item3.Item_Code && cnt < 1)
+                    {
+                        var image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Item3.Picture));
+                        var alt_Text = Item3.Item_Name;
+
+
+                        <img src="@image" id="itemPicture" alt="@alt_Text" />
+                        <p></p>
+                        cnt = cnt + 1;
+                      
+                    }
+                }
+
+
+            }
+
+        }
+        <div class="bottom">
+            <input type="button" value="order details" style="align-self: baseline" class="btn btn-default" onclick="createModal('@Url.Action("Oview2","Chef",new { id=Item1.Order_Number })')" />
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            <input type="button" value="complete order" style="align-self   : baseline" class="btn btn-default" onclick="createModal('@Url.Action("complete","Chef",new { id=Item1.Order_Number })')" />
+        </div>
+    </div>
+        }
+    }
+</div>
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content" id="modelContent">
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script>
+        function createModal(url) {
+            $('#modelContent').load(url);
+            $('#myModal').modal('show');
+        }
+    </script>
+}

@@ -1,78 +1,93 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200&family=Palette+Mosaic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200&family=Palette+Mosaic&family=Poppins:wght@200&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+.description {
+    width: 600px;
+    height: 150px;
 }
 
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/*Start region: View menu section*/
+
+.view_menu_container {
+    margin-left: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.item-container {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.25);
+    padding: 15px 15px;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
-.t, r, h {
+#itemPicture {
     width: 100%;
+    height: 75%;
+}
+.bottom {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 1;
+}
+.view_order_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+.itemcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.option-titles {
+    font-family: 'Inter',sans-serif;
+}
+.t, r, h {
+    width: 60%;
     border-collapse: collapse;
-    /*text-align:center;*/
+ 
     font-size: x-large;
+  
+}
+.trh {
+    background: rgba(229, 110, 94, 0.4);
+
 }
 
-.flexcon2 {
-    display: flex;
+ input {
+        background-color: rgba(229, 110, 94, 0.4);
+ }
+h1{
+    font-size:xx-large;
+    font-weight:900;
 }
-
-#flex21 {
-    flex: 0.15;
-    background-color: #444648;
+#line{
+    display:inline;
 }
-
-#flex22 {
-    flex: 3;
+#Picture {
+    width: 25%;
+    height: 25%;
 }
-
-#img, n {
-    display: inline-block;
-}
-
-.flexcon {
-    display: flex;
-    background-color: forestgreen;
-}
-
-#flex0 {
-    flex: 2;
-}
-
-#flex1 {
-    flex: 0.5;
-    text-align: right;
-}
-
-#flex22 {
-    flex: 0.5;
-}
-
-.dnav {
-    display: inline-block;
-}
-
-
-i {
-    font-size: 20px;
-}
-
-h1 {
-    font-size: xx-large;
-    font-weight: 900;
+#dsh, #dsh1,#dsh2{
+    width:50%
 }

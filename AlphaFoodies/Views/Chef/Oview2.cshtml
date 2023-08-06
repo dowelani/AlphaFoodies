@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Oview";
+}
+@Styles.Render("~/Content/chef.css")
+@{
+
+    IEnumerable<AlphaFoodies.Models.Order> order = ViewData["order"] as IEnumerable<AlphaFoodies.Models.Order>;
+    IEnumerable<AlphaFoodies.Models.MenuItem> menuItem = ViewData["menuitem"] as IEnumerable<AlphaFoodies.Models.MenuItem>;
+    IEnumerable<AlphaFoodies.Models.OrderItem> orderItem = ViewData["orderitem"] as IEnumerable<AlphaFoodies.Models.OrderItem>;
+    int c = (int)ViewBag.d;
+}
+<h3>Order details</h3>
+
+<div class="view_order_container">
+    @foreach (var Item1 in order)
+    {
+        if (Item1.Order_Number == c)
+        {
+            int quantity = 0;
+
+    <div class="itemcontainer">
+        <p>Order Number : @Item1.Order_Number</p>
+        @foreach (var Item2 in orderItem)
+        {
+            if (Item2.Order_Number == Item1.Order_Number)
+            {
+                quantity = quantity + Item2.Quantity;
+
+
+                foreach (var Item3 in menuItem)
+                {
+                    if (Item2.Item_Code == Item3.Item_Code)
+                    {
+                        <p>@Item3.Item_Name  </p> <p>quantity=@Item2.Quantity</p>
+                    }
+                }
+
+
+            }
+
+        }
+        <p>Order Time : @Item1.Order_Time    </p> <p>   Tip : @Item1.Tip</p>
+        <p>Comment : @Item1.Comment</p>
+        <div class="bottom">
+            <a href="@Url.Action("order","Chef")">
+                <input type="button" value="view orders" class="btn btn-default" />
+            </a>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            <input type="button" value="complete order" style="align-self: baseline" class="btn btn-default" onclick="createModal('@Url.Action("complete","Chef",new { id=Item1.Order_Number })')" />
+        </div>
+    </div>
+        }
+
+    }
+</div>
+
+
+
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content" id="modelContent">
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script>
+        function createModal(url) {
+            $('#modelContent').load(url);
+            $('#myModal').modal('show');
+        }
+    </script>
+}

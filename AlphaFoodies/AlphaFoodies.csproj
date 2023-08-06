@@ -206,6 +206,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chef.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -300,6 +301,14 @@
     <Content Include="Views\Customer\viewOrder.cshtml" />
     <Content Include="Views\Admin\editItem.cshtml" />
     <Content Include="Views\Admin\viewAdminProfile.cshtml" />
+    <Content Include="Views\Chef\accept.cshtml" />
+    <Content Include="Views\Chef\complete.cshtml" />
+    <Content Include="Views\Chef\dash.cshtml" />
+    <Content Include="Views\Chef\dashboard.cshtml" />
+    <Content Include="Views\Chef\edit.cshtml" />
+    <Content Include="Views\Chef\order.cshtml" />
+    <Content Include="Views\Chef\Oview.cshtml" />
+    <Content Include="Views\Chef\Oview2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

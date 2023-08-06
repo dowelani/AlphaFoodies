@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AlphaFoodies.Models.Order>
+@{
+    ViewBag.Title = "dash";
+    Layout = "~/Views/Shared/chef_Layout.cshtml";
+}
+@Styles.Render("~/Content/chef.css")
+@{
+    int c = (int)ViewBag.id;
+}
+
+<h1>Alpha Foodies</h1>
+
+@{ int oc = 0;
+    int on = 0;
+    double avR = 0;
+    double cnt = 0;
+}
+@foreach (var item in Model)
+{
+    if (item.ChefID == c && item.Order_Status == "complete")
+    {
+        oc = oc + 1;
+        avR = avR + item.Service_Rating;
+        cnt = cnt + 1;
+    }
+    if (item.ChefID == c && item.Order_Status == "Preparing")
+    {
+        on = on + 1;
+    }
+
+}
+@{ double a = avR / cnt;}
+@foreach (var item in Model)
+{
+    if (item.ChefID == c)
+    {
+        <div>
+            <h3>Name                        :@item.Chef.Firstname</h3>
+        </div>
+        <div>
+            <h3>Surname                     :@item.Chef.Lastname</h3>
+        </div>
+        <div>
+            <h3>Number of orders completed  :@oc</h3>
+        </div>
+        <div>
+            <h3>Average rating              :@a</h3>
+        </div>
+        return;
+    }
+
+}
+
+

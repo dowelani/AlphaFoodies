@@ -4,53 +4,55 @@
     ViewBag.Title = "History";
     Layout = "~/Views/Shared/chef_Layout.cshtml";
 }
-
+@Styles.Render("~/Content/chef.css")
 <h1>History</h1>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Chef.Firstname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Waiter.Firstname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_Items)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_Total)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Service_Rating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_PrepTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tip)
-        </th>
+<table id="ordertable" class="display">
+    <thead class="trh">
+        <tr>
+            <th>
+                Order Number
+            </th>
+            <th>
+                Chef name
+            </th>
+            <th>
+                Waiter name
+            </th>
+            <th>
+                Order Items
+            </th>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Order Time
+            </th>
+            <th>
+                Order Total
+            </th>
+            <th>
+                Service Rating
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                Order Status
+            </th>
+            <th>
+                Order PrepTime
+            </th>
+            <th>
+                Order Type
+            </th>
+            <th>
+                Tip
+            </th>
 
-    </tr>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
@@ -99,3 +101,13 @@
     }
 
 </table>
+
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ordertable").DataTable();
+        });
+    </script>
+}

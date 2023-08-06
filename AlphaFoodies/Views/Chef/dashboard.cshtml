@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "dashboard";
+    Layout = "~/Views/Shared/chef_Layout.cshtml";
+}
+@Styles.Render("~/Content/chef.css")
+<table id="dsh">
+    <tr id="dsh1">
+        <th style="padding-right:25px" id="dsh2">
+            <a href="@Url.Action("dash","Chef")">
+                <i style=" font-size: 200px; color: black;  " class='bx bxs-pie-chart-alt-2'></i>
+                <p style=" color: black; padding-left:65px ">Chef stats</p>
+            </a>
+        </th>
+        <th id="dsh2">
+            <a href="@Url.Action("order","Chef")">
+                <i style=" font-size: 200px; color: black; text-align: center" class='bx bx-notepad'></i>
+                <p style=" color: black; text-align: center ">Orders</p>
+            </a>
+        </th>
+    </tr>
+    <tr id="dsh1">
+        <th style="padding-right: 25px" id="dsh2">
+            <a href="@Url.Action("History","Chef")">
+                <i style="font-size: 200px; color: black; " class='bx bx-notepad'></i>
+                <p style=" color: black; padding-left: 65px ">Order History</p>
+            </a>
+        </th>
+        <th id="dsh2">
+            <a href="@Url.Action("profile","Chef")">
+                <i style="font-size: 200px; color: black; " class='bx bx-user'></i>
+                <p style=" color: black; text-align: center ">Profile</p>
+            </a>
+        </th>
+    </tr>
+
+    <tr id="dsh1">
+        <th style="padding-right: 25px" id="dsh2">
+            <a href="@Url.Action("settings","Chef")">
+                <i style="font-size: 200px; color: black; " class='bx bx-cog'></i>
+                <p style=" color: black; padding-left: 65px ">Settings</p>
+            </a>
+        </th>
+    </tr>
+</table>

@@ -8,7 +8,7 @@ namespace AlphaFoodies.Controllers
 {
     public class LoginController : Controller
     {
-        private AlphaFoodiesModel model = new AlphaFoodiesModel(); 
+        private AlphaFoodiesModel model = new AlphaFoodiesModel();
         [HttpGet]
         public ActionResult home()
         {
@@ -27,9 +27,9 @@ namespace AlphaFoodies.Controllers
                 return RedirectToAction("verifyUser");
             }
             else
-            { 
+            {
                 //if its a customer it must be directed to the menu
-                return RedirectToAction("Index", "Customer");
+                return RedirectToAction("customerIndex", "Customer");
             }              
         }
 
@@ -55,14 +55,15 @@ namespace AlphaFoodies.Controllers
                 Admin admin = (from cur_user in model.Admins
                                where cur_user.Email_Address.Equals(user.Email_Address)
                                select cur_user).SingleOrDefault();
-                //Session["AdminId"]=admin.
+                TempData.Add("cA", admin.Admin1);
                 //check if the password matches
                 if (admin.Password.Equals(user.Password))
                 {
-                    return RedirectToAction("AddMenuItem","Admin"); //go to landing page
+                    return RedirectToAction("profile","Admin"); //go to landing page
                 }
                 else
                 {
+                    TempData.Remove("cA");
                     ViewBag.message = "*email or password incorrect";
                     return View("verifyUser");
                 }
@@ -73,14 +74,15 @@ namespace AlphaFoodies.Controllers
                 Chef chef = (from cur_chef in model.Chefs
                              where cur_chef.Email_Address.Equals(user.Email_Address)
                              select cur_chef).SingleOrDefault();
-
+                TempData.Add("c", chef.ChefID);
                 //check if the password matches
                 if (chef.Password.Equals(user.Password))
                 {
-                    return RedirectToAction(""); //go to chef landing page
+                    return RedirectToAction("dashboard","Chef");     //go to chef landing page
                 }
                 else
                 {
+                    TempData.Remove("c");
                     ViewBag.message = "*email or password incorrect";
                     return View("verifyUser");
                 }
